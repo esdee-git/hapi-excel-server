@@ -12,10 +12,16 @@
   httpRequest.onload = function(e) {
     var jsonData = httpRequest.response;
     console.log(jsonData);
-    var container = document.getElementById('content');    
+    var container = document.getElementById('content');
     var hot = new Handsontable(container,
       {
-       data: JSON.parse(jsonData)
+       data: JSON.parse(jsonData),
+       minSpareRows: 0,
+       colHeaders: true,
+       rowHeaders: true,
+       contextMenu: true,
+       manualColumnResize: true,
+       formulas: false
       });
   }
   httpRequest.send();
