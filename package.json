@@ -1,18 +1,20 @@
 {
-  "name": "xlsx",
+  "name": "hapi-xlsx-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Esdee",
+  "license": "MIT",
   "dependencies": {
     "excel": "^0.1.4",
+    "handlebars": "^4.0.5",
     "hapi": "^13.0.0",
     "inert": "^3.2.0",
     "node-xlsx": "^0.6.0",
-    "vision": "^4.0.1"
+    "vision": "^4.0.1",
+    "xlsx": "^0.8.0"
   }
 }

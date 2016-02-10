@@ -1,0 +1,28 @@
+<html>
+<head>
+  <script src="https://handsontable.com/static/bower_components/handsontable-pro/dist/handsontable.full.js"></script>
+  <link href="https://handsontable.com/static/bower_components/handsontable-pro/dist/handsontable.full.css" type="text/css" rel="stylesheet">
+  <script>
+  /* set up XMLHttpRequest */
+  var url = "http://localhost:8000/excel";
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open("GET", url, true);
+  httpRequest.responseType = "application/json";
+
+  httpRequest.onload = function(e) {
+    var jsonData = httpRequest.response;
+    console.log(jsonData);
+    var container = document.getElementById('content');
+    var hot = new Handsontable(container,
+      {
+       data: JSON.parse(jsonData)
+      });
+  }
+  httpRequest.send();
+  </script>
+
+</head>
+  <body>
+    <div id="content">Content</div>
+ </body>
+</html>

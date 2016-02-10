@@ -18,7 +18,7 @@ server.route({
     method: 'GET',
     path:'/',
     handler: function (request, reply) {
-        return reply('hello world');
+        reply.view('index').code(200);
     }
 });
 
@@ -26,8 +26,25 @@ server.route({
     method: 'GET',
     path:'/excel',
     handler: function (request, reply) {
-        reply.file('./public/interview.xlsx');
+      var filename = __dirname + '/public/interview.xlsx';
+      var XLSX = require('xlsx');
+      var workbook = XLSX.readFile(filename);
+      var sheetnames = workbook.SheetNames;
+      var name = sheetnames[0];
+      var worksheet = workbook.Sheets[name];
+      var sheetdata = XLSX.utils.sheet_to_json(worksheet);
+      reply(sheetdata).code(200);
     }
+});
+
+server.views({
+    engines: {
+        html: require('handlebars')
+    },
+    relativeTo: __dirname,
+    path: './views',
+    layoutPath: './layouts',
+    helpersPath: './helpers',
 });
 
 // Start the server
