@@ -24,6 +24,16 @@ server.route({
 
 server.route({
     method: 'GET',
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: 'public'
+        }
+    }
+});
+
+server.route({
+    method: 'GET',
     path:'/excel',
     handler: function (request, reply) {
       var filename = __dirname + '/public/interview.xlsx';

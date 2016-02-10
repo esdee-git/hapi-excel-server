@@ -1,7 +1,7 @@
 <html>
 <head>
-  <script src="https://handsontable.com/static/bower_components/handsontable-pro/dist/handsontable.full.js"></script>
-  <link href="https://handsontable.com/static/bower_components/handsontable-pro/dist/handsontable.full.css" type="text/css" rel="stylesheet">
+  <script src="dist/handsontable.full.js"></script>
+  <link rel="stylesheet" media="screen" href="dist/handsontable.full.css">
   <script>
   /* set up XMLHttpRequest */
   var url = "http://localhost:8000/excel";
@@ -12,7 +12,7 @@
   httpRequest.onload = function(e) {
     var jsonData = httpRequest.response;
     console.log(jsonData);
-    var container = document.getElementById('content');
+    var container = document.getElementById('content');    
     var hot = new Handsontable(container,
       {
        data: JSON.parse(jsonData)
