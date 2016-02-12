@@ -37,12 +37,16 @@ server.route({
     path:'/excel',
     handler: function (request, reply) {
       var filename = __dirname + '/public/interview.xlsx';
+      console.log(filename);
       var XLSX = require('xlsx');
       var workbook = XLSX.readFile(filename);
       var sheetnames = workbook.SheetNames;
+      console.log(sheetnames);
       var name = sheetnames[0];
+      console.log(name);
       var worksheet = workbook.Sheets[name];
       var sheetdata = XLSX.utils.sheet_to_json(worksheet);
+      console.log(sheetdata.substring(0, 100));
       reply(sheetdata).code(200);
     }
 });
